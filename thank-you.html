@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>You&rsquo;re booked | Genavise Marketing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Lead generation and appointment setting systems for real estate agents using Facebook ads and automated follow-up.">
+<meta property="og:title" content="You&rsquo;re booked | Genavise Marketing">
+<meta property="og:description" content="Lead generation and appointment setting systems for real estate agents using Facebook ads and automated follow-up.">
+<!-- Official Inter distribution. Do NOT swap this for Google Fonts' Inter:
+     that build strips the cv03/cv04/cv09/cv11 character variants this design
+     depends on, and the substitution fails silently. -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://genavise.com/thank-you.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://genavise.com/about-us.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://rsms.me/">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Genavise home">
+        <img src="logo.png" alt="Genavise" width="220" height="48">
+        <span class="logo-fallback" aria-hidden="true">GENAVISE</span>
+      </a>
+      <nav class="header-nav" id="navmenu">
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#results">Results</a>
+        <a href="about-us.html">About Us</a>
+        <a href="index.html#faqs">FAQs</a>
+      </nav>
+      <div class="header-cta"><a class="btn btn-primary" href="index.html">Home</a></div>
+      <button class="nav-toggle" id="navtoggle" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <section class="thanks">
+    <h1 class="hw">Thank you!</h1>
+    <p class="hw lead">We&rsquo;ve got you booked.</p>
+    <p class="hw note">A confirmation with your date, time, and meeting link is on
+      its way to your email (and text).</p>
+
+    <svg class="arrow" viewBox="0 0 82 150" aria-hidden="true">
+      <path d="M14 6c14 10 30 26 34 48 4 22-6 44-24 64"/>
+      <path d="M9 100c4 8 9 15 15 22"/>
+      <path d="M38 116c-6 2-11 4-14 6"/>
+    </svg>
+
+    <p class="hw prompt">To make sure we can actually get you results on the call:</p>
+    <ul class="hw">
+      <li>Add the event to your calendar now so you&rsquo;re not double-booked</li>
+      <li>Be at a computer in a quiet place so we can look at your numbers and tools together</li>
+      <li>If you need to reschedule, use the link in your confirmation email so someone
+        else can grab your slot.</li>
+    </ul>
+
+    <p class="hw signoff">See you on the call.</p>
+
+    <span class="sig">
+      <img src="signature.png" alt="Mehak" width="240" height="90">
+    </span>
+
+    <div class="cta"><a class="btn btn-primary" href="index.html">Home</a></div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer rv">
+    <div class="footer-brand">
+      <span class="footer-logo">
+        <img src="logo.png" alt="Genavise" width="110" height="44">
+        <span class="logo-fallback" aria-hidden="true">GENAVISE</span>
+      </span>
+      <p class="footer-tag">Lead generation systems<br>for real estate agents.</p>
+    </div>
+    <nav class="footer-col f-links">
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#results">Results</a>
+      <a href="about-us.html">About Us</a>
+      <a href="index.html#faqs">FAQs</a>
+    </nav>
+    <nav class="footer-col legal f-legal">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-conditions.html">Terms &amp; Conditions</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </nav>
+    <p class="footer-contact">mehak@genavise.com · Washington D.C.</p>
+  </footer>
+
+</div>
+
+<script>
+/* scroll reveal */
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -10% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+/* faq accordion — one open at a time */
+(function(){
+  var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var panel = item.querySelector('.faq-a');
+    btn.addEventListener('click', function(){
+      var open = item.dataset.open === 'true';
+      items.forEach(function(o){
+        o.dataset.open = 'false';
+        o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        o.querySelector('.faq-a').style.height = '0px';
+      });
+      if(!open){
+        item.dataset.open = 'true';
+        btn.setAttribute('aria-expanded','true');
+        panel.style.height = panel.firstElementChild.getBoundingClientRect().height + 12 + 'px';
+      }
+    });
+  });
+})();
+
+/* image slots: if a file is missing, fall back cleanly instead of showing a
+   broken-image icon. Drop the real files into  and this does nothing. */
+(function(){
+  document.querySelectorAll('.logo img,.footer-logo img,.sig img').forEach(function(im){
+    var mark=function(){ im.parentElement.classList.add('no-img'); };
+    if(im.complete && im.naturalWidth===0) mark();
+    im.addEventListener('error', mark);
+  });
+  document.querySelectorAll('.shot img,.proof img').forEach(function(im){
+    var mark=function(){ im.parentElement.classList.add('empty'); };
+    if(im.complete && im.naturalWidth===0) mark();
+    im.addEventListener('error', mark);
+  });
+})();
+
+/* mobile nav */
+(function(){
+  var t = document.getElementById('navtoggle'), m = document.getElementById('navmenu');
+  if(!t) return;
+  t.addEventListener('click', function(){
+    var open = m.classList.toggle('open');
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  m.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){ m.classList.remove('open'); t.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
+</body>
+</html>

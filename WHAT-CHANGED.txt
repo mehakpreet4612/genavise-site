@@ -1,51 +1,74 @@
-UPLOAD ONE FILE: site.css
-=========================
+UPLOAD THESE 3 FILES
+====================
 
-Only the stylesheet changed this round. index.html and booking.html are already
-correct on GitHub - leave them alone.
+  thank-you.html     new page (your site didn't have one - see below)
+  site.css           adds the handwriting styles
+  handwriting.woff2  the handwriting font, self-hosted
 
-On your repo: Add file -> Upload files -> drag in site.css -> Commit changes.
-Then hard-refresh with Ctrl+Shift+R.
+Add file -> Upload files -> drag all three -> Commit. Then Ctrl+Shift+R.
 
 
-THE FOUR FIXES
+FIRST: A GAP WORTH KNOWING ABOUT
+--------------------------------
+Your new site had NO thank-you page. Only the Framer one has it. If your
+GoHighLevel calendar is set to redirect to /thank-you after someone books, they
+were landing on your 404 page - right at the moment they've just committed.
+This page fixes that.
+
+After uploading, check the redirect URL in GoHighLevel:
+  Calendar settings -> Confirmation / After booking -> Redirect URL
+  Set it to:  https://genavise.com/thank-you
+  (or https://genavise-site.pages.dev/thank-you while you're still testing)
+
+
+ON THE HANDWRITING - MY HONEST TAKE
+-----------------------------------
+The instinct is right. A warm, handwritten confirmation page is genuinely good,
+and post-booking is exactly the moment to be human. Keep the idea.
+
+The problem is that the Excalidraw version is a PICTURE of writing, not writing.
+That costs you five things:
+
+1. MOBILE. This is the big one. A wide image of handwriting scaled down to a
+   390px phone screen either shrinks until it's unreadable or forces sideways
+   scrolling. Most people book on their phone.
+2. It can't be edited. Change one word and you're back in Excalidraw
+   re-exporting and re-uploading.
+3. Screen readers and search engines read nothing at all - it's just pixels.
+4. It renders soft on high-resolution screens unless exported at 2x or more.
+5. Nobody can select or copy the text - which matters here, because the page
+   is giving people instructions.
+
+There's also a typo baked into the image: "4 confirmation with your date..."
+The handwritten A reads as a 4. You can't fix that without re-exporting.
+
+THE CLEANER WAY (what this page does)
+-------------------------------------
+Real HTML text set in a real handwriting font, self-hosted so it loads fast and
+doesn't depend on Google. You keep the exact handwritten feel and lose every one
+of those five problems: it reflows on a phone, you edit it by changing a word in
+the HTML, screen readers read it, it's razor sharp at any resolution, and people
+can copy it.
+
+The arrow stays a drawing - as an inline SVG, because an arrow genuinely IS a
+drawing, not text. Same for your signature.
+
+The font is Architects Daughter, the closest widely-available match to
+Excalidraw's own handwriting. If you'd prefer something more looping and
+signature-like, say so and I'll swap it for Caveat - it's a one-line change.
+
+I also set this page to noindex, and kept it out of your sitemap. Confirmation
+pages shouldn't turn up in Google search results.
+
+YOUR SIGNATURE
 --------------
-
-1. MORE AIR ABOVE THE NAV
-   The logo sat 20px below the top of the page, which is why it felt cramped
-   against the browser's own toolbar. It now sits at 74px, and the logo, nav
-   links and button are all vertically centred with each other. That matches the
-   proportions of your Framer version.
-
-2. EVERY SCREENSHOT IS NOW FRAMED
-   All four images get a 1px #e0e0e0 border with an 8px white inset, and the
-   image inside gets slightly rounded corners. Your screenshots are mostly
-   white, so on a white page they were bleeding into the background and reading
-   as random floating fragments. The frame gives them an edge.
-
-3. THE GAP BETWEEN THE FOUR ICONS AND THE BUTTON
-   This was a real bug, not a spacing choice. The rule that centres a section's
-   content used automatic margins, and with two blocks on one screen - the icon
-   row and the button - those margins shoved them to opposite ends, opening
-   about 300px of dead space. Removed; the pair is now centred as a group with a
-   deliberate 52px gap.
-
-4. THE BOOKING CALENDAR IS NARROWER AND HIGHER
-   It was running the full 1680px width, so on a laptop you got a slab you had
-   to scroll around. Now capped at 1080px and centred - GoHighLevel keeps its
-   two-column layout down to about 900px, so nothing is lost and it reads as a
-   focused card. I also cut the space above it, pulling the calendar roughly
-   90px further up the page so more of it is visible without scrolling.
-
-   Note: I do not set a height on that iframe. GoHighLevel's own script measures
-   its content and sets the height itself - I tried overriding it while testing
-   and the whole widget collapsed to a sliver. The min-height in the CSS is only
-   a floor so the page does not jump while the calendar loads.
-
+There's a slot for it. Export your signature from Excalidraw as a PNG with a
+transparent background, name it signature.png, and upload it alongside these
+files. It'll appear under "See you on the call." If you don't upload one, the
+slot vanishes cleanly - no empty box.
 
 VERIFIED
 --------
-Logo 74px from top. Icon-row to button gap 52px. Image frames 1px #e0e0e0 with
-8px inset. Calendar 1080px wide with its two columns intact, checked live on
-your own pages.dev URL. All 13 sections still alone on screen with zero
-bleed-through.
+Renders correctly at 1512x900 and 390x844, no sideways scrolling, handwriting
+font loading, text fully selectable, signature slot hiding itself while the file
+is missing.
