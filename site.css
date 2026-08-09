@@ -96,8 +96,8 @@ ul{margin:0;padding-left:1.15em}
 .statrow{display:flex;gap:0}
 .statrow>div{flex:1;display:flex;flex-direction:column;gap:10px}
 .proof{width:894px;max-width:100%;aspect-ratio:894/202;margin:62px auto 0;
-  border-radius:20px;background:#fff;overflow:hidden;
-  border:1px solid #e0e0e0;padding:8px;box-sizing:border-box}
+  border-radius:20px;background:#ededed;overflow:hidden;
+  border:1px solid #d8d8d8;padding:8px;box-sizing:border-box}
 .proof img{width:100%;height:100%;object-fit:cover;display:block;border-radius:6px}
 .proof.empty{background:var(--grey-eee)}
 .proof.empty img{display:none}
@@ -113,11 +113,12 @@ ul{margin:0;padding-left:1.15em}
 /* ---------- screenshot slots ----------
    Exact box reserved, image fills it, grey block shows if the file is absent.
    aspect-ratio keeps the shape when the width shrinks on mobile.
-   The 1px border + 8px white inset frames each screenshot, so a shot with a
-   white background doesn't bleed into the white page and read as a floating
-   fragment. box-sizing keeps the padding inside the reserved aspect box.      */
-.shot{display:block;width:100%;background:#fff;overflow:hidden;
-  border:1px solid #e0e0e0;padding:8px;box-sizing:border-box}
+   The 8px inset is GREY, not white. A white mat on a white page is invisible -
+   you only saw the hairline border, which read as no frame at all. A grey mat
+   gives each screenshot a visible edge. box-sizing keeps the padding inside the
+   reserved aspect box.                                                        */
+.shot{display:block;width:100%;background:#ededed;overflow:hidden;
+  border:1px solid #d8d8d8;padding:8px;box-sizing:border-box}
 .shot img{width:100%;height:100%;object-fit:cover;display:block;border-radius:6px}
 .shot.empty{background:var(--grey-eee)}
 .shot.empty img{display:none}
@@ -312,11 +313,20 @@ ul{margin:0;padding-left:1.15em}
   letter-spacing:-.03em;color:var(--black);text-align:center}
 /* 1080px, not full width: the GoHighLevel calendar keeps its two-column layout
    down to ~900px and reads as a focused card instead of a full-bleed slab.
+
+   position:relative is LOAD-BEARING - do not remove it. While initialising,
+   GoHighLevel's script parks the iframe at `position:absolute; left:-9999px` to
+   measure it. With no positioned ancestor, that absolute box escapes this
+   container and measures against the full viewport width instead of 1080px, the
+   measurement comes back wrong, and the widget never becomes visible - the
+   booking page renders completely blank. position:relative keeps the measuring
+   step inside this box so the calendar initialises correctly.
+
    min-height is only a floor to stop the page jumping before the calendar
-   loads - never set `height` on the iframe, GoHighLevel's script owns that and
-   overriding it collapses the widget. */
-.embed{max-width:1080px;width:100%;margin:28px auto 80px;min-height:640px;
-  display:flex;align-items:stretch}
+   loads. Never set `height` on the iframe either - GoHighLevel owns that, and
+   overriding it collapses the widget to a sliver. */
+.embed{position:relative;max-width:1080px;width:100%;margin:28px auto 80px;
+  min-height:640px;display:flex;align-items:stretch}
 /* GoHighLevel's form_embed.js sets the real height on the iframe once the
    calendar loads, so min-height here is only a floor to stop the page jumping. */
 .embed iframe{width:100%;min-height:640px;border:0;display:block;overflow:hidden}

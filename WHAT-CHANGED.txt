@@ -1,74 +1,50 @@
-UPLOAD THESE 3 FILES
-====================
+UPLOAD ONE FILE: site.css
+=========================
 
-  thank-you.html     new page (your site didn't have one - see below)
-  site.css           adds the handwriting styles
-  handwriting.woff2  the handwriting font, self-hosted
-
-Add file -> Upload files -> drag all three -> Commit. Then Ctrl+Shift+R.
+Add file -> Upload files -> drag in site.css -> Commit -> Ctrl+Shift+R.
 
 
-FIRST: A GAP WORTH KNOWING ABOUT
---------------------------------
-Your new site had NO thank-you page. Only the Framer one has it. If your
-GoHighLevel calendar is set to redirect to /thank-you after someone books, they
-were landing on your 404 page - right at the moment they've just committed.
-This page fixes that.
+1. THE BLANK BOOKING PAGE - MY BUG, FOUND AND FIXED
+---------------------------------------------------
+You were right, and it was my fault. Narrowing the calendar to 1080px last round
+is what made it disappear. I reproduced it on your live site and traced it.
 
-After uploading, check the redirect URL in GoHighLevel:
-  Calendar settings -> Confirmation / After booking -> Redirect URL
-  Set it to:  https://genavise.com/thank-you
-  (or https://genavise-site.pages.dev/thank-you while you're still testing)
+What was happening: while GoHighLevel's script starts up, it parks the calendar
+iframe off-screen at `position:absolute; left:-9999px` so it can measure it
+without any flicker. In CSS, an absolutely positioned box is measured against
+its nearest POSITIONED ancestor - and my container wasn't positioned. So the
+iframe escaped the 1080px box and got measured against the full 1905px window
+instead. The measurement came back for the wrong width, GoHighLevel never
+finished initialising, and it left the iframe hidden. Result: a blank page.
+
+The fix is one word - `position:relative` on the container. That keeps the
+measuring step inside the 1080px box, so the calendar initialises correctly and
+appears.
+
+Confirmed on three separate fresh loads of your live site: calendar renders at
+1080px with both columns intact.
+
+This is why it was so confusing: at full width it worked, and it also worked
+when I narrowed it AFTER the page had loaded during testing. It only broke when
+the narrow width was there from the start - which is exactly the real-world case
+I should have retested and didn't. Apologies for the round trip.
+
+I've left a comment in the CSS marking that line as load-bearing, so nobody
+(including me) removes it later.
 
 
-ON THE HANDWRITING - MY HONEST TAKE
------------------------------------
-The instinct is right. A warm, handwritten confirmation page is genuinely good,
-and post-booking is exactly the moment to be human. Keep the idea.
+2. THE IMAGE FRAME IS NOW GREY, NOT WHITE
+-----------------------------------------
+You were right about this too. I had made the 8px inset white - and white on a
+white page is invisible, so all you saw was the 1px hairline, which read as
+basically no frame.
 
-The problem is that the Excalidraw version is a PICTURE of writing, not writing.
-That costs you five things:
+The mat is now grey (#ededed) with a slightly darker #d8d8d8 outline. Your
+screenshots now sit inside a visible grey frame instead of bleeding into the
+page. Applies to all four images.
 
-1. MOBILE. This is the big one. A wide image of handwriting scaled down to a
-   390px phone screen either shrinks until it's unreadable or forces sideways
-   scrolling. Most people book on their phone.
-2. It can't be edited. Change one word and you're back in Excalidraw
-   re-exporting and re-uploading.
-3. Screen readers and search engines read nothing at all - it's just pixels.
-4. It renders soft on high-resolution screens unless exported at 2x or more.
-5. Nobody can select or copy the text - which matters here, because the page
-   is giving people instructions.
-
-There's also a typo baked into the image: "4 confirmation with your date..."
-The handwritten A reads as a 4. You can't fix that without re-exporting.
-
-THE CLEANER WAY (what this page does)
--------------------------------------
-Real HTML text set in a real handwriting font, self-hosted so it loads fast and
-doesn't depend on Google. You keep the exact handwritten feel and lose every one
-of those five problems: it reflows on a phone, you edit it by changing a word in
-the HTML, screen readers read it, it's razor sharp at any resolution, and people
-can copy it.
-
-The arrow stays a drawing - as an inline SVG, because an arrow genuinely IS a
-drawing, not text. Same for your signature.
-
-The font is Architects Daughter, the closest widely-available match to
-Excalidraw's own handwriting. If you'd prefer something more looping and
-signature-like, say so and I'll swap it for Caveat - it's a one-line change.
-
-I also set this page to noindex, and kept it out of your sitemap. Confirmation
-pages shouldn't turn up in Google search results.
-
-YOUR SIGNATURE
---------------
-There's a slot for it. Export your signature from Excalidraw as a PNG with a
-transparent background, name it signature.png, and upload it alongside these
-files. It'll appear under "See you on the call." If you don't upload one, the
-slot vanishes cleanly - no empty box.
 
 VERIFIED
 --------
-Renders correctly at 1512x900 and 390x844, no sideways scrolling, handwriting
-font loading, text fully selectable, signature slot hiding itself while the file
-is missing.
+Calendar loading at 1080px on the live site, three fresh loads. Grey mat
+rendering at 8px with the darker outline. Nothing else on the site touched.
