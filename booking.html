@@ -50,10 +50,50 @@
   <section class="embed rv">
     <iframe src="https://api.leadconnectorhq.com/widget/booking/ysQbIgZzgVpMprU3yowS"
             title="Book a strategy call with Genavise"
-            allow="payment" scrolling="no" loading="lazy"
+            allow="payment" scrolling="no"
             id="ysQbIgZzgVpMprU3yowS_1786245085301"></iframe>
+
+    <!-- Safety net. The calendar is a third-party widget on GoHighLevel's
+         servers: if their script is slow, fails, or a visitor's ad blocker
+         strips it, the iframe stays empty and the visitor sees nothing. Rather
+         than let someone stare at a blank page at the exact moment they want to
+         book, this appears after 9 seconds with a direct link. -->
+    <div class="embed-fallback" id="embed-fallback" hidden>
+      <strong>Calendar not loading?</strong>
+      <span>It can be blocked by browser extensions. Open it directly instead &mdash;
+        it only takes a moment.</span>
+      <a class="btn btn-primary"
+         href="https://api.leadconnectorhq.com/widget/booking/ysQbIgZzgVpMprU3yowS"
+         target="_blank" rel="noopener">Open the calendar</a>
+    </div>
   </section>
   <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+  <script>
+  /* Show the fallback only if the calendar genuinely has not appeared.
+     Detection note: do NOT test the iframe's rendered height. The CSS gives it a
+     min-height floor so the page doesn't jump while loading, which makes an
+     iframe that never loaded look 640px tall and therefore "fine". The reliable
+     signal is that GoHighLevel's script sets an INLINE height on the iframe once
+     the calendar is measured and ready. No inline height, or an inline
+     visibility:hidden, means it has not loaded. */
+  (function(){
+    var frame = document.getElementById('ysQbIgZzgVpMprU3yowS_1786245085301');
+    var fb    = document.getElementById('embed-fallback');
+    if(!frame || !fb) return;
+    function loaded(){
+      var inlineH = parseInt(frame.style.height || '0', 10);
+      var cs = getComputedStyle(frame);
+      return inlineH > 400 && cs.visibility !== 'hidden' && cs.opacity !== '0';
+    }
+    var checks = 0;
+    var timer = setInterval(function(){
+      checks++;
+      if(loaded()){ fb.hidden = true; clearInterval(timer); return; }
+      if(checks >= 18) fb.hidden = false;      /* ~9s, then keep watching */
+      if(checks >= 120) clearInterval(timer);  /* give up after ~60s */
+    }, 500);
+  })();
+  </script>
 
   <!-- ============ FOOTER ============ -->
   <footer class="footer rv">

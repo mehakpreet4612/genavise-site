@@ -1,50 +1,65 @@
-UPLOAD ONE FILE: site.css
-=========================
-
-Add file -> Upload files -> drag in site.css -> Commit -> Ctrl+Shift+R.
+UPLOAD TWO FILES: site.css and booking.html
+===========================================
 
 
-1. THE BLANK BOOKING PAGE - MY BUG, FOUND AND FIXED
----------------------------------------------------
-You were right, and it was my fault. Narrowing the calendar to 1080px last round
-is what made it disappear. I reproduced it on your live site and traced it.
+FIRST - THE CALENDAR IS ACTUALLY FINE
+-------------------------------------
+Your own observation solved this, and it wasn't a code problem at all.
 
-What was happening: while GoHighLevel's script starts up, it parks the calendar
-iframe off-screen at `position:absolute; left:-9999px` so it can measure it
-without any flicker. In CSS, an absolutely positioned box is measured against
-its nearest POSITIONED ancestor - and my container wasn't positioned. So the
-iframe escaped the 1080px box and got measured against the full 1905px window
-instead. The measurement came back for the wrong width, GoHighLevel never
-finished initialising, and it left the iframe hidden. Result: a blank page.
+Look at the address bar in the screenshots where it was blank:
 
-The fix is one word - `position:relative` on the container. That keeps the
-measuring step inside the 1080px box, so the calendar initialises correctly and
-appears.
+    01b02751.genavise-site.pages.dev/booking
+    87bcb7ea.genavise-site.pages.dev/booking
+    481a84b1.genavise-site.pages.dev/booking
 
-Confirmed on three separate fresh loads of your live site: calendar renders at
-1080px with both columns intact.
+Those hashed prefixes are Cloudflare PREVIEW URLs. Every commit gets its own
+frozen snapshot at its own address. When you click a deployment in the Cloudflare
+dashboard, it opens that snapshot - and the ones you were clicking are older
+commits from before the fixes. They will stay broken forever, because that is
+what a snapshot is.
 
-This is why it was so confusing: at full width it worked, and it also worked
-when I narrowed it AFTER the page had loaded during testing. It only broke when
-the narrow width was there from the start - which is exactly the real-world case
-I should have retested and didn't. Apologies for the round trip.
+The real site has no hash:
 
-I've left a comment in the CSS marking that line as load-bearing, so nobody
-(including me) removes it later.
+    https://genavise-site.pages.dev/booking          <- bookmark this one
+
+I loaded it and the calendar renders correctly: 1080px wide, 787px tall,
+two columns, visible. Verified directly on the page.
+
+Once genavise.com is connected, this stops being a trap entirely - your domain
+always serves the newest deployment. Until then, only trust the URL with no hash
+in front of it.
+
+I should have caught this earlier. I was diagnosing CSS while you were looking at
+old snapshots, and I sent you a "fix" for a bug that wasn't there. Sorry for the
+wasted round trip.
 
 
-2. THE IMAGE FRAME IS NOW GREY, NOT WHITE
------------------------------------------
-You were right about this too. I had made the 8px inset white - and white on a
-white page is invisible, so all you saw was the 1px hairline, which read as
-basically no frame.
+SECOND - A SAFETY NET, WHICH IS WORTH HAVING ANYWAY
+--------------------------------------------------
+While testing I did see the calendar fail to appear on the real URL once. It is a
+third-party widget living on GoHighLevel's servers, so it can be slow, it can
+fail, and an ad blocker or privacy extension can strip it out entirely. Some
+share of your real visitors run those extensions.
 
-The mat is now grey (#ededed) with a slightly darker #d8d8d8 outline. Your
-screenshots now sit inside a visible grey frame instead of bleeding into the
-page. Applies to all four images.
+The failure mode was bad: a completely blank space at the exact moment someone
+has decided to book.
+
+booking.html now watches for it. If the calendar has not appeared after about 9
+seconds, a message appears in its place with a button that opens the booking page
+directly in a new tab. If the calendar shows up late, the message disappears
+again on its own. Nobody ever stares at a blank rectangle.
+
+One detail worth recording, because it caught me out: you cannot detect this by
+measuring the iframe's height. The CSS gives it a 640px min-height floor so the
+page doesn't jump while loading, which makes an iframe that never loaded look
+perfectly healthy. The reliable signal is that GoHighLevel sets an INLINE height
+on the iframe once the calendar is genuinely measured and ready. That is what the
+script checks.
 
 
 VERIFIED
 --------
-Calendar loading at 1080px on the live site, three fresh loads. Grey mat
-rendering at 8px with the darker outline. Nothing else on the site touched.
+Calendar rendering on the real URL at 1080px with both columns. Fallback stays
+hidden while loading, appears after ~9s if the calendar never arrives, and hides
+itself again if the calendar turns up late. Tested at 1512x900 and 390x844, no
+sideways scrolling.

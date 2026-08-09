@@ -331,6 +331,19 @@ ul{margin:0;padding-left:1.15em}
    calendar loads, so min-height here is only a floor to stop the page jumping. */
 .embed iframe{width:100%;min-height:640px;border:0;display:block;overflow:hidden}
 /* shown only when no scheduler has been pasted in yet */
+/* fallback shown only if the third-party calendar never appears. Absolutely
+   positioned inside the relative .embed so it fills the empty space without
+   disturbing the iframe's own sizing. */
+.embed-fallback{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:16px;text-align:center;padding:40px;
+  background:var(--grey-eee);border-radius:20px}
+.embed-fallback[hidden]{display:none}
+.embed-fallback strong{font-size:22px;line-height:1.3em;
+  font-variation-settings:var(--display);letter-spacing:-.02em;color:var(--black)}
+.embed-fallback span{font-size:16px;line-height:1.6em;
+  font-variation-settings:var(--read);letter-spacing:-.02em;color:var(--grey-666);
+  max-width:420px}
+
 .embed-empty{width:100%;min-height:640px;background:var(--grey-eee);border-radius:20px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
   text-align:center;padding:40px}
