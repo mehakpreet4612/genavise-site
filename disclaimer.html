@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Disclaimer | Genavise Marketing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Lead generation and appointment setting systems for real estate agents using Facebook ads and automated follow-up.">
+<meta property="og:title" content="Disclaimer | Genavise Marketing">
+<meta property="og:description" content="Lead generation and appointment setting systems for real estate agents using Facebook ads and automated follow-up.">
+<!-- Official Inter distribution. Do NOT swap this for Google Fonts' Inter:
+     that build strips the cv03/cv04/cv09/cv11 character variants this design
+     depends on, and the substitution fails silently. -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="https://genavise.com/disclaimer.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://genavise.com/disclaimer.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://rsms.me/">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Genavise home">
+        <img src="assets/logo.png" alt="Genavise" width="220" height="48">
+        <span class="logo-fallback" aria-hidden="true">GENAVISE</span>
+      </a>
+      <nav class="header-nav" id="navmenu">
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#results">Results</a>
+        <a href="about-us.html">About Us</a>
+        <a href="index.html#faqs">FAQs</a>
+      </nav>
+      <div class="header-cta"><a class="btn btn-primary" href="index.html">Home</a></div>
+      <button class="nav-toggle" id="navtoggle" aria-expanded="false" aria-controls="navmenu" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <section class="prose rv">
+    <h1>Disclaimer</h1>
+    <p>The information provided by GENAVISE MARKETING L.L.C. (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) on this website is for general informational and marketing purposes only.</p>
+    <p>We make every effort to accurately represent our services, systems, and past experiences. However, individual results may vary depending on many factors including market conditions, ad spend, follow-up speed, communication, sales ability, local competition, and overall business operations.</p>
+    <p>Any examples, testimonials, case studies, or performance metrics shared on this website are provided for illustrative purposes only and should not be interpreted as guarantees of future results.</p>
+    <p>We do not guarantee:</p>
+    <p class="bullet">• A specific number of leads</p>
+    <p class="bullet">• Appointments</p>
+    <p class="bullet">• Clients</p>
+    <p class="bullet">• Closings</p>
+    <p class="bullet">• Revenue</p>
+    <p class="bullet">• Return on investment</p>
+    <p>Real estate marketing performance varies from business to business.</p>
+    <p>GENAVISE MARKETING L.L.C. provides marketing, advertising, automation, and lead generation support services. We are not acting as licensed financial advisors, brokers, legal professionals, or real estate representatives unless otherwise stated.</p>
+    <p>By using this website, you acknowledge that any decisions made based on the information provided are done at your own discretion and risk.</p>
+    <p>We are not responsible for the content, policies, or practices of any third-party websites or tools.</p>
+    <p>If you have questions regarding this disclaimer, you may contact us at:</p>
+    <p class="contact"><a href="mailto:mehak@genavise.com">mehak@genavise.com</a></p>
+    <p class="contact">GENAVISE MARKETING L.L.C.</p>
+    <p>Elkridge, Maryland</p>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer rv">
+    <div class="footer-brand">
+      <span class="footer-logo">
+        <img src="assets/logo.png" alt="Genavise" width="110" height="44">
+        <span class="logo-fallback" aria-hidden="true">GENAVISE</span>
+      </span>
+      <p class="footer-tag">Lead generation systems<br>for real estate agents.</p>
+    </div>
+    <nav class="footer-col f-links">
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#results">Results</a>
+      <a href="about-us.html">About Us</a>
+      <a href="index.html#faqs">FAQs</a>
+    </nav>
+    <nav class="footer-col legal f-legal">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-conditions.html">Terms &amp; Conditions</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </nav>
+    <p class="footer-contact">mehak@genavise.com · Washington D.C.</p>
+  </footer>
+
+</div>
+
+<script>
+/* scroll reveal */
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -10% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+/* faq accordion — one open at a time */
+(function(){
+  var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var panel = item.querySelector('.faq-a');
+    btn.addEventListener('click', function(){
+      var open = item.dataset.open === 'true';
+      items.forEach(function(o){
+        o.dataset.open = 'false';
+        o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        o.querySelector('.faq-a').style.height = '0px';
+      });
+      if(!open){
+        item.dataset.open = 'true';
+        btn.setAttribute('aria-expanded','true');
+        panel.style.height = panel.firstElementChild.getBoundingClientRect().height + 12 + 'px';
+      }
+    });
+  });
+})();
+
+/* image slots: if a file is missing, fall back cleanly instead of showing a
+   broken-image icon. Drop the real files into assets/ and this does nothing. */
+(function(){
+  document.querySelectorAll('.logo img,.footer-logo img').forEach(function(im){
+    var mark=function(){ im.parentElement.classList.add('no-img'); };
+    if(im.complete && im.naturalWidth===0) mark();
+    im.addEventListener('error', mark);
+  });
+  document.querySelectorAll('.shot img,.proof img').forEach(function(im){
+    var mark=function(){ im.parentElement.classList.add('empty'); };
+    if(im.complete && im.naturalWidth===0) mark();
+    im.addEventListener('error', mark);
+  });
+})();
+
+/* mobile nav */
+(function(){
+  var t = document.getElementById('navtoggle'), m = document.getElementById('navmenu');
+  if(!t) return;
+  t.addEventListener('click', function(){
+    var open = m.classList.toggle('open');
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  m.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){ m.classList.remove('open'); t.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+:root{
+  --white:#fff; --black:#000; --grey-999:#999; --grey-777:#777; --grey-666:#666;
+  --grey-eee:#eee; --ink-70:rgba(0,0,0,.7); --ink-45:rgba(0,0,0,.45); --ink-40:rgba(0,0,0,.4);
+  /* weights: bumped one step over the source site so the lettering reads
+     as solid as the real logo. Tune all boldness from these five lines. */
+  --display:"opsz" 32,"wght" 800;   /* headings, stat numbers  (site: 700) */
+  --semi:"opsz" 32,"wght" 700;      /* stat + pillar labels    (site: 600) */
+  --ui:"opsz" 24,"wght" 600;        /* nav, FAQ questions      (site: 500) */
+  --btn:"opsz" 20,"wght" 700;       /* button labels           (site: 600) */
+  --read:"opsz" 24,"wght" 450;      /* long-form body          (site: 400) */
+  --read-15:"opsz" 24,"wght" 550;   /* 16px grey body          (site: 500) */
+  --wordmark:"opsz" 32,"wght" 900;  /* GENAVISE logo - 900 is Inter's hard ceiling */
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--white); color:var(--black);
+  font-family:"InterVariable","Inter var","Inter",sans-serif;
+  font-optical-sizing:auto;
+  font-feature-settings:"cv03" 1,"cv04" 1,"cv09" 1,"cv11" 1;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+ul{margin:0;padding-left:1.15em}
+
+.page{display:flex;flex-direction:column;padding:0 20px}
+.wrap{width:100%;margin:0 auto}
+.header,.hero,.s-results,.s-why,.steps,.midcta,.pillars,.s-casestats,
+.s-testi,.s-case,.s-guar,.s-faq,.s-finalcta,.footer,.header-inner{width:100%}
+
+/* ---------- type ---------- */
+.t-hero{font-size:44px;line-height:1em;font-variation-settings:var(--display);letter-spacing:-.04em;text-align:center}
+.t-sec{font-size:44px;line-height:1.1em;font-variation-settings:var(--display);letter-spacing:-.04em}
+.t-num{font-size:68px;line-height:1em;font-variation-settings:var(--display);letter-spacing:-.04em;text-align:center}
+.t-lab{font-size:22px;line-height:1em;font-variation-settings:var(--semi);letter-spacing:-.02em;text-align:center;color:var(--grey-999)}
+.t-lab-t{font-size:22px;line-height:1.2em;font-variation-settings:var(--semi);letter-spacing:-.02em;text-align:center;color:var(--grey-999)}
+.t-pillar{font-size:22px;line-height:1em;font-variation-settings:var(--semi);letter-spacing:-.02em;text-align:center;color:var(--black)}
+.t-h2-lead{font-size:34px;line-height:1.2em;font-variation-settings:var(--display);letter-spacing:-.03em}
+.t-h2-flush{font-size:34px;line-height:1em;font-variation-settings:var(--display);letter-spacing:-.03em}
+.t-quote{font-size:34px;line-height:1.3em;font-variation-settings:var(--display);letter-spacing:-.03em;text-align:center}
+.t-h2-case{font-size:32px;line-height:1.4em;font-variation-settings:var(--display);letter-spacing:-.04em}
+.t-h2-guar{font-size:38px;line-height:1.2em;font-variation-settings:var(--display);letter-spacing:-.03em;text-align:center}
+.t-step{font-size:22px;line-height:1.2em;font-variation-settings:var(--read);letter-spacing:-.02em;color:var(--grey-999)}
+.t-ctasub{font-size:22px;line-height:1.1em;font-variation-settings:var(--read);letter-spacing:-.02em;color:var(--grey-999);text-align:center}
+.t-attr{font-size:18px;line-height:1.4em;font-variation-settings:"opsz" 24,"wght" 500;letter-spacing:-.01em;color:var(--grey-999);text-align:center}
+.t-guar{font-size:18px;line-height:1.6em;font-variation-settings:var(--read);letter-spacing:-.01em;color:var(--ink-70);text-align:center}
+.t-case{font-size:17px;line-height:1.6em;font-variation-settings:var(--read);letter-spacing:-.02em;color:var(--grey-666)}
+.t-15{font-size:16px;line-height:1.4em;font-variation-settings:var(--read-15);letter-spacing:-.01em;color:var(--grey-777)}
+.t-eyebrow{font-size:14px;line-height:1.2em;font-variation-settings:var(--semi);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-45);text-align:center}
+.t-fine{font-size:13px;line-height:1.5em;font-variation-settings:var(--read);letter-spacing:0;color:var(--ink-40);text-align:center}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:auto;min-width:0;height:46px;padding:0 24px;border:0;border-radius:100px;
+  font-size:15px;line-height:1.2em;font-variation-settings:var(--btn);
+  letter-spacing:-.005em;white-space:nowrap;text-align:center;cursor:pointer;transition:all .2s ease;
+  font-family:inherit;
+}
+.btn-primary{background:var(--black);color:#fff}
+.btn-secondary{background:var(--grey-eee);color:var(--black)}
+.btn:hover{opacity:.85}
+.btn-center{display:flex;width:fit-content;margin:0 auto}
+
+/* ---------- header ---------- */
+.header{position:sticky;top:0;z-index:10;background:var(--white)}
+.header-inner{max-width:1158px;margin:0 auto;height:160px;padding-top:20px;display:flex;align-items:flex-start}
+/* ---------- logo: IMAGE SLOT ----------
+   Drop your logo file in next to this HTML as  assets/logo.png  (or .svg / .webp)
+   and it appears automatically. The box is pre-reserved at 220x48 so nothing
+   shifts while it loads. If the file is missing, the text wordmark below shows
+   instead, so the page never renders broken.                                  */
+.logo{display:block;width:220px;height:48px;flex:0 0 auto;position:relative}
+.logo img{width:100%;height:100%;object-fit:contain;object-position:left center;display:block}
+.logo-fallback{display:none;height:48px;line-height:48px;color:var(--black);
+  font-size:44px;font-variation-settings:var(--wordmark);letter-spacing:.03em;
+  text-transform:uppercase;-webkit-text-stroke:2px currentColor;paint-order:stroke fill;
+  white-space:nowrap}
+.logo.no-img img{display:none}
+.logo.no-img .logo-fallback{display:block}
+.header-nav{margin-left:auto;display:flex;align-items:center;gap:34px;padding-top:15px}
+.header-nav a{font-size:16px;line-height:1em;font-variation-settings:var(--ui);letter-spacing:-.01em;color:var(--grey-999);transition:color .2s ease}
+.header-nav a:hover{color:var(--black)}
+.header-cta{margin-left:64px;padding-top:1px}
+.nav-toggle{display:none}
+
+/* ---------- hero ---------- */
+.hero{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:50px;padding:205px 0 0;min-height:584px}
+.hero-actions{display:flex;gap:10px;justify-content:center}
+.muted{color:var(--grey-999)}
+
+/* ---------- sections ---------- */
+.s-results{max-width:1155px;margin:0 auto;padding:376px 0}
+.statrow{display:flex;gap:0}
+.statrow>div{flex:1;display:flex;flex-direction:column;gap:10px}
+.proof{width:894px;max-width:100%;aspect-ratio:894/202;margin:62px auto 0;
+  border-radius:20px;background:var(--grey-eee);overflow:hidden}
+.proof img{width:100%;height:100%;object-fit:cover;display:block}
+.proof.empty img{display:none}
+
+.s-why{max-width:948px;margin:0 auto;padding:185px 0 389px;display:flex;flex-direction:column;gap:22px}
+.s-why .t-15{max-width:600px}
+.s-why .stack{display:flex;flex-direction:column;gap:20px;margin-top:39px}
+
+.steps{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.step{display:flex;align-items:center;gap:80px;padding:58px 0;min-height:400px}
+.step.rev{flex-direction:row-reverse}
+.step-copy{width:340px;flex:0 0 340px;display:flex;flex-direction:column;gap:42px}
+.step-media{flex:1;display:flex;justify-content:center}
+/* ---------- screenshot slots ----------
+   Same idea: exact box reserved, image fills it, grey block shows if the file
+   is absent. aspect-ratio keeps the shape when the width shrinks on mobile.   */
+.shot{display:block;width:100%;background:var(--grey-eee);overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot.empty img{display:none}
+.ph-1{max-width:480px;aspect-ratio:480/284;border-radius:10px}
+.ph-2{max-width:446px;aspect-ratio:446/309;border-radius:20px}
+.ph-3{max-width:476px;aspect-ratio:476/309;border-radius:20px}
+.ph-3 img{object-fit:contain}
+.midcta{padding:60px 0}
+
+.pillars{max-width:960px;margin:0 auto;padding:190px 0;display:flex}
+.pillar{flex:1;display:flex;flex-direction:column;align-items:center;gap:20px}
+.pillar svg{width:48px;height:48px;fill:var(--black)}
+.s-casestats{max-width:960px;margin:0 auto;padding:60px 0 36px}
+
+.s-testi{max-width:1200px;margin:0 auto;padding:182px 0;display:flex;flex-direction:column;gap:46px}
+.s-testi .t-quote{max-width:1160px;margin:0 auto}
+.s-case{max-width:948px;margin:0 auto;padding:192px 0;display:flex;flex-direction:column;gap:22px}
+.s-case .t-case{max-width:640px}
+.s-case .stack{display:flex;flex-direction:column;gap:25px;margin-top:20px}
+.s-guar{max-width:948px;margin:0 auto;padding:165px 0;display:flex;flex-direction:column;gap:24px;align-items:center}
+.s-guar .t-guar{max-width:640px}
+.s-guar .t-fine{max-width:600px}
+
+/* ---------- faq ---------- */
+.s-faq{max-width:655px;margin:0 auto;display:flex;flex-direction:column;gap:7px;padding-bottom:0}
+.s-faq>.t-sec{text-align:center;margin-bottom:96px}
+.faq-item{background:var(--grey-eee);border-radius:10px;overflow:hidden}
+.faq-q{width:100%;background:none;border:0;min-height:44px;display:flex;align-items:center;gap:14px;
+  padding:0 20px;cursor:pointer;font-family:inherit;text-align:left;
+  font-size:16px;line-height:1.2em;font-variation-settings:var(--ui);letter-spacing:-.01em;color:var(--black)}
+.faq-q:focus-visible{outline:2px solid #000;outline-offset:2px}
+.faq-icon{position:relative;flex:0 0 14px;width:14px;height:14px;color:var(--grey-999)}
+.faq-icon::before,.faq-icon::after{content:"";position:absolute;background:currentColor;transition:transform .2s ease,opacity .2s ease}
+.faq-icon::before{left:0;top:6.5px;width:14px;height:1.5px}
+.faq-icon::after{left:6.25px;top:0;width:1.5px;height:14px}
+.faq-item[data-open="true"] .faq-icon::after{opacity:0;transform:rotate(90deg)}
+.faq-a{height:0;overflow:hidden;transition:height .3s ease-in-out}
+.faq-a-inner{padding:0 20px 18px 50px;font-size:16px;line-height:1.4em;
+  font-variation-settings:var(--read);letter-spacing:-.01em;color:var(--grey-999);
+  display:flex;flex-direction:column;gap:20px}
+
+.s-finalcta{max-width:941px;margin:0 auto;padding:168px 0 0;display:flex;flex-direction:column;gap:44px;align-items:center}
+.s-finalcta .t-h2-flush{text-align:center}
+
+/* ---------- footer ---------- */
+.footer{max-width:1081px;margin:0 auto;padding:53px 0 90px;display:flex;gap:40px;align-items:flex-start;margin-top:246px}
+.footer-brand{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:9px}
+.footer-logo{display:block;width:110px;height:44px;position:relative}
+.footer-logo img{width:100%;height:100%;object-fit:contain;object-position:left center;display:block}
+.footer-logo .logo-fallback{font-size:22px;line-height:44px;height:44px;-webkit-text-stroke:1px currentColor}
+.footer-logo.no-img img{display:none}
+.footer-logo.no-img .logo-fallback{display:block}
+.footer-tag{font-size:16px;line-height:1.3em;font-variation-settings:var(--read);letter-spacing:-.01em;color:var(--black)}
+.footer-col{display:flex;flex-direction:column;gap:11px}
+.footer-col a{font-size:16px;line-height:1.2em;font-variation-settings:var(--read);transition:opacity .2s ease}
+.footer-col.legal a{font-size:16px;line-height:1.2em;white-space:nowrap}
+.footer-col a:hover{opacity:.6}
+.footer-contact{font-size:16px;line-height:1.3em;font-variation-settings:var(--read);letter-spacing:-.01em;white-space:nowrap;flex:0 0 auto}
+.f-links{flex:0 0 124px}
+.f-legal{flex:0 0 156px}
+
+/* ---------- anchors ---------- */
+#results{scroll-margin-top:247px}
+#how-it-works{scroll-margin-top:155px}
+#faqs{scroll-margin-top:20px}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(20px);
+  transition:opacity .5s ease-out,transform .5s cubic-bezier(.44,0,.56,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- tablet ---------- */
+@media (max-width:1199.98px){
+  .t-num{font-size:54px}
+  .t-lab,.t-lab-t{font-size:19px}
+  .t-quote,.t-h2-lead,.t-h2-flush{font-size:28px}
+  .t-hero,.t-sec{font-size:37px}
+  .t-h2-guar{font-size:32px}
+  .t-h2-case{font-size:28px}
+  .t-step{font-size:19px}
+  .step{gap:48px}
+  .step-copy{flex:0 0 300px;width:300px}
+  .ph-1,.ph-2,.ph-3{width:100%;max-width:420px}
+  .logo{width:186px;height:41px}
+  .logo-fallback{font-size:37px;line-height:41px;height:41px;-webkit-text-stroke:1.7px currentColor}
+  .footer-brand{flex:0 0 300px}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:809.98px){
+  .t-num{font-size:30px}
+  .t-lab,.t-lab-t{font-size:15px}
+  .t-quote,.t-h2-lead,.t-h2-flush{font-size:23px}
+  .t-hero{font-size:30px}
+  .t-sec{font-size:30px}
+  .t-h2-guar{font-size:25px}
+  .t-h2-case{font-size:23px}
+  .t-step{font-size:17px}
+  .t-case,.t-guar{font-size:16px}
+
+  .header-inner{height:auto;min-height:80px;align-items:center;flex-wrap:wrap;padding:14px 0 12px;gap:12px}
+  .header-nav{position:static;order:3;flex-basis:100%;margin:0;padding-top:0;
+    flex-direction:column;align-items:flex-start;gap:18px;display:none}
+  .header-nav.open{display:flex;padding-top:18px}
+  .header-nav a{font-size:18px;font-variation-settings:"opsz" 24,"wght" 500;color:var(--black)}
+  .header-cta{margin-left:auto;padding-top:0;flex:0 0 auto}
+  /* header button must NOT take the full-width treatment the page CTAs get */
+  .header-cta .btn{height:38px;padding:0 16px;font-size:13px;letter-spacing:-.01em}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;
+    width:36px;height:36px;margin-left:6px;background:none;border:0;cursor:pointer;
+    font-size:20px;color:var(--black);flex:0 0 auto}
+
+  .hero{padding:72px 0 0;min-height:0;gap:36px}
+  .hero-actions{flex-direction:column;align-items:center}
+  .btn{width:auto;max-width:100%;min-width:0;padding:0 20px}
+  .btn-center{width:fit-content;max-width:100%}
+
+  .s-results{padding:130px 0}
+  .statrow{flex-direction:column;gap:40px}
+  .proof{width:100%;height:auto;aspect-ratio:1568/314;margin-top:40px}
+
+  .s-why{padding:64px 0 136px}
+  .s-why .t-15,.s-case .t-case,.s-guar .t-guar,.s-guar .t-fine{max-width:100%}
+
+  .step{flex-direction:column!important;gap:28px;padding:40px 0;min-height:0}
+  .step-copy{flex:0 0 auto;width:100%;gap:20px}
+  .step-media{width:100%}
+  .ph-1,.ph-2,.ph-3{max-width:100%;width:100%}   /* aspect-ratio already set, shape holds */
+  .logo{width:150px;height:34px}
+  .logo img{object-position:left center}
+  .logo-fallback{font-size:23px;line-height:34px;height:34px;-webkit-text-stroke:1px currentColor}
+
+  .pillars{padding:66px 0;flex-wrap:wrap;gap:40px 0}
+  .pillar{flex:0 0 50%}
+  .s-testi{padding:64px 0}
+  .s-case{padding:68px 0}
+  .s-guar{padding:58px 0}
+  .s-faq{max-width:100%}
+  .s-faq>.t-sec{margin-bottom:40px}
+  .faq-q{min-height:auto;padding:12px 16px;line-height:1.3em}
+  .faq-a-inner{padding:0 16px 14px 44px}
+  .s-finalcta{padding-top:80px}
+  .footer{margin-top:88px;flex-direction:column;gap:32px;padding-bottom:56px}
+  .footer-brand,.f-links,.f-legal{flex:0 0 auto}
+  .footer-contact{white-space:normal}
+}
+
+@media (max-width:359.98px){
+  .logo{width:128px;height:29px}
+  .logo-fallback{font-size:20px;line-height:29px;height:29px;-webkit-text-stroke:.9px currentColor}
+  .header-cta .btn{padding:0 11px;font-size:12px;height:34px}
+  .nav-toggle{width:28px;height:32px;margin-left:4px;font-size:18px}
+  .header-inner{padding:12px 0 10px;gap:8px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .rv{opacity:1!important;transform:none!important}
+  html{scroll-behavior:auto}
+  .faq-a{transition:none}
+}
+/* ==========================================================================
+   SUBPAGE STYLES  (about-us, booking, privacy-policy, terms-conditions,
+   disclaimer). All five share one prose column: 948px wide, 60px top /
+   140px bottom padding, 22px gap. Body copy clamps to 640px inside it.
+   ========================================================================== */
+.prose{max-width:948px;width:100%;margin:0 auto;padding:60px 0 140px;
+  display:flex;flex-direction:column;gap:22px}
+.prose h1{font-size:32px;line-height:1.4em;font-variation-settings:var(--display);
+  letter-spacing:-.04em;color:var(--black);max-width:948px}
+.prose h2{font-size:32px;line-height:1.4em;font-variation-settings:var(--display);
+  letter-spacing:-.04em;color:var(--black);max-width:948px;margin-top:24px}
+.prose h3{font-size:21px;line-height:1.3em;font-variation-settings:var(--display);
+  letter-spacing:-.02em;color:var(--black);max-width:640px;margin-top:22px}
+.prose p{font-size:17px;line-height:1.6em;font-variation-settings:var(--read);
+  letter-spacing:-.02em;color:var(--grey-666);max-width:640px}
+.prose .eyebrow{font-size:17px;line-height:1.6em;color:var(--grey-666);
+  font-variation-settings:var(--read);letter-spacing:-.02em}
+.prose .bullet{padding-left:20px;text-indent:-20px}   /* hanging bullet, like the live site */
+.prose .contact{color:var(--black)}
+/* inline prose links only - :not(.btn) matters, or this rule wins on specificity
+   over .btn-primary and paints the button label black on a black pill. */
+.prose a:not(.btn){color:var(--black);text-decoration:underline;text-underline-offset:3px}
+.prose a:not(.btn):hover{opacity:.6}
+.prose .btn-primary{color:#fff;text-decoration:none}
+.prose .btn-secondary{color:var(--black);text-decoration:none}
+.prose .cta{margin-top:20px}
+
+/* booking page: heading + scheduler embed */
+.book-head{max-width:1200px;width:100%;margin:0 auto;padding:76px 0 0}
+.book-head h1{font-size:34px;line-height:1.3em;font-variation-settings:var(--display);
+  letter-spacing:-.03em;color:var(--black);text-align:center}
+.embed{max-width:1680px;width:100%;margin:44px auto 120px;min-height:798px;
+  display:flex;align-items:stretch}
+.embed iframe{width:100%;min-height:798px;border:0;display:block}
+/* shown only when no scheduler has been pasted in yet */
+.embed-empty{width:100%;min-height:798px;background:var(--grey-eee);border-radius:20px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  text-align:center;padding:40px}
+.embed-empty strong{font-size:20px;line-height:1.3em;font-variation-settings:var(--display);
+  letter-spacing:-.02em;color:var(--black)}
+.embed-empty span{font-size:16px;line-height:1.6em;font-variation-settings:var(--read);
+  letter-spacing:-.02em;color:var(--grey-666);max-width:460px}
+
+@media (max-width:1199.98px){
+  .prose h1,.prose h2{font-size:28px}
+  .prose h3{font-size:20px}
+  .book-head h1{font-size:28px}
+}
+@media (max-width:809.98px){
+  .prose{padding:36px 0 72px;gap:18px}
+  .prose h1,.prose h2{font-size:24px;margin-top:16px}
+  .prose h3{font-size:19px;margin-top:14px}
+  .prose p,.prose .eyebrow{font-size:16px;max-width:100%}
+  .prose h1,.prose h2,.prose h3{max-width:100%}
+  .book-head{padding:36px 0 0}
+  .book-head h1{font-size:23px}
+  .embed,.embed iframe,.embed-empty{min-height:620px}
+  .embed{margin:28px auto 64px}
+}
