@@ -27,7 +27,7 @@ ul{margin:0;padding-left:1.15em}
 
 .page{display:flex;flex-direction:column;padding:0 20px}
 .wrap{width:100%;margin:0 auto}
-.header,.hero,.s-results,.s-why,.steps,.midcta,.pillars,.s-casestats,
+.header,.hero,.s-results,.s-why,.step,.midcta,.pillars,.s-casestats,
 .s-testi,.s-case,.s-guar,.s-faq,.s-finalcta,.footer,.header-inner{width:100%}
 
 /* ---------- type ---------- */
@@ -104,8 +104,7 @@ ul{margin:0;padding-left:1.15em}
 .s-why .t-15{max-width:600px}
 .s-why .stack{display:flex;flex-direction:column;gap:20px;margin-top:39px}
 
-.steps{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:0}
-.step{display:flex;align-items:center;gap:80px;padding:58px 0;min-height:400px}
+.step{max-width:960px;width:100%;margin:0 auto;display:flex;align-items:center;gap:80px}
 .step.rev{flex-direction:row-reverse}
 .step-copy{width:340px;flex:0 0 340px;display:flex;flex-direction:column;gap:42px}
 .step-media{flex:1;display:flex;justify-content:center}
@@ -174,9 +173,9 @@ ul{margin:0;padding-left:1.15em}
 .f-legal{flex:0 0 156px}
 
 /* ---------- anchors ---------- */
-#results{scroll-margin-top:247px}
-#how-it-works{scroll-margin-top:155px}
-#faqs{scroll-margin-top:20px}
+#results{scroll-margin-top:0}
+#how-it-works{scroll-margin-top:0}
+#faqs{scroll-margin-top:0}
 
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(20px);
@@ -236,7 +235,7 @@ ul{margin:0;padding-left:1.15em}
   .s-why{padding:64px 0 136px}
   .s-why .t-15,.s-case .t-case,.s-guar .t-guar,.s-guar .t-fine{max-width:100%}
 
-  .step{flex-direction:column!important;gap:28px;padding:40px 0;min-height:0}
+  .step{flex-direction:column!important;gap:28px;min-height:0}
   .step-copy{flex:0 0 auto;width:100%;gap:20px}
   .step-media{width:100%}
   .ph-1,.ph-2,.ph-3{max-width:100%;width:100%}   /* aspect-ratio already set, shape holds */
@@ -304,9 +303,11 @@ ul{margin:0;padding-left:1.15em}
 .book-head{max-width:1200px;width:100%;margin:0 auto;padding:76px 0 0}
 .book-head h1{font-size:34px;line-height:1.3em;font-variation-settings:var(--display);
   letter-spacing:-.03em;color:var(--black);text-align:center}
-.embed{max-width:1680px;width:100%;margin:44px auto 120px;min-height:798px;
+.embed{max-width:1680px;width:100%;margin:44px auto 0;min-height:798px;
   display:flex;align-items:stretch}
-.embed iframe{width:100%;min-height:798px;border:0;display:block}
+/* GoHighLevel's form_embed.js sets the real height on the iframe once the
+   calendar loads, so min-height here is only a floor to stop the page jumping. */
+.embed iframe{width:100%;min-height:798px;border:0;display:block;overflow:hidden}
 /* shown only when no scheduler has been pasted in yet */
 .embed-empty{width:100%;min-height:798px;background:var(--grey-eee);border-radius:20px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
@@ -331,4 +332,57 @@ ul{margin:0;padding-left:1.15em}
   .book-head h1{font-size:23px}
   .embed,.embed iframe,.embed-empty{min-height:620px}
   .embed{margin:28px auto 64px}
+}
+
+/* ==========================================================================
+   ONE SECTION PER SCREEN
+   Every major home-page block sits in a .screen wrapper that fills the viewport
+   and vertically centres its contents, so scrolling settles on one section at a
+   time with nothing bleeding in from above or below - at any window height.
+
+   Two details that matter:
+   * box-sizing + padding-top:var(--hdr) reserves the sticky header's height
+     INSIDE the 100svh box. Content therefore centres in the visible area below
+     the header rather than sliding underneath it. Without this, jumping to
+     #faqs hides the "FAQs" title behind the header.
+   * svh, not vh: on phones it excludes the browser chrome that appears and
+     disappears while scrolling, which vh does not.
+   min-height, never height, so a block that needs more room grows instead of
+   clipping.
+   ========================================================================== */
+:root{ --hdr:160px }
+
+.screen{
+  box-sizing:border-box;
+  width:100%;
+  min-height:100vh;
+  min-height:100svh;
+  padding-top:var(--hdr);
+  padding-bottom:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  scroll-margin-top:0;        /* the centring positions content, not an offset */
+}
+/* the first screen follows the header in normal flow, so it must not
+   reserve that space twice */
+.hero-screen{
+  min-height:calc(100vh - var(--hdr));
+  min-height:calc(100svh - var(--hdr));
+  padding-top:0;
+}
+.screen > *{ margin-top:auto; margin-bottom:auto }
+
+/* the old fixed paddings created the spacing these screens now handle -
+   leaving them in would stack 700px on top of a full viewport */
+.hero,.s-results,.s-why,.step,.pillars,.s-casestats,
+.s-testi,.s-case,.s-guar,.s-finalcta{padding:0}
+.hero,.step{min-height:0}
+.midcta{padding:56px 0 0}
+
+@media (max-width:1199.98px){ :root{ --hdr:150px } }
+@media (max-width:809.98px){
+  :root{ --hdr:112px }
+  .screen{padding-bottom:40px}
+  .midcta{padding:40px 0 0}
 }
