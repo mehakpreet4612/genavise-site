@@ -1,66 +1,51 @@
-UPLOAD THESE 3 FILES TO GITHUB
-==============================
+UPLOAD ONE FILE: site.css
+=========================
 
-Only these three changed. Everything else in the repo stays as it is.
+Only the stylesheet changed this round. index.html and booking.html are already
+correct on GitHub - leave them alone.
 
-  index.html      home page - each section now owns a full screen
-  site.css        the section-per-screen rules live here
-  booking.html    your GoHighLevel calendar is wired in
-
-How: on your repo, Add file -> Upload files, drag these three in, commit.
-Same filenames, so they overwrite. Cloudflare redeploys in about a minute.
+On your repo: Add file -> Upload files -> drag in site.css -> Commit changes.
+Then hard-refresh with Ctrl+Shift+R.
 
 
-WHAT I CHANGED
+THE FOUR FIXES
 --------------
 
-1. ONE SECTION PER SCREEN
-   Every major block on the home page now sits in a wrapper that fills the
-   viewport and centres its content. Scrolling settles on one section at a
-   time - no more Step 2 peeking above Step 3, no FAQ title creeping in at
-   the bottom of the guarantee.
+1. MORE AIR ABOVE THE NAV
+   The logo sat 20px below the top of the page, which is why it felt cramped
+   against the browser's own toolbar. It now sits at 74px, and the logo, nav
+   links and button are all vertically centred with each other. That matches the
+   proportions of your Framer version.
 
-   The old version used fixed pixel padding, which is why it drifted: 376px
-   of space looks right on one screen size and wrong on every other. This
-   version measures against the actual window height, so it holds up on a
-   laptop, a big monitor and a phone alike.
+2. EVERY SCREENSHOT IS NOW FRAMED
+   All four images get a 1px #e0e0e0 border with an 8px white inset, and the
+   image inside gets slightly rounded corners. Your screenshots are mostly
+   white, so on a white page they were bleeding into the background and reading
+   as random floating fragments. The frame gives them an edge.
 
-2. THE STICKY HEADER NO LONGER SWALLOWS HEADINGS
-   The header sits on top of the page, so centred content could slide
-   underneath it - that's why the "FAQs" title vanished when you clicked FAQs
-   in the nav. Each screen now reserves the header's height inside itself, so
-   content centres in the space you can actually see.
+3. THE GAP BETWEEN THE FOUR ICONS AND THE BUTTON
+   This was a real bug, not a spacing choice. The rule that centres a section's
+   content used automatic margins, and with two blocks on one screen - the icon
+   row and the button - those margins shoved them to opposite ends, opening
+   about 300px of dead space. Removed; the pair is now centred as a group with a
+   deliberate 52px gap.
 
-3. THE NAV LINKS LAND CENTRED
-   Results, How It Works and FAQs previously used fixed pixel offsets that
-   pushed content to the bottom of the screen. Those are gone - the centring
-   does the positioning now, so every jump lands mid-screen with the section
-   heading visible.
+4. THE BOOKING CALENDAR IS NARROWER AND HIGHER
+   It was running the full 1680px width, so on a laptop you got a slab you had
+   to scroll around. Now capped at 1080px and centred - GoHighLevel keeps its
+   two-column layout down to about 900px, so nothing is lost and it reads as a
+   focused card. I also cut the space above it, pulling the calendar roughly
+   90px further up the page so more of it is visible without scrolling.
 
-4. MID-PAGE CTA MOVED
-   The lone "Book A Strategy Call" button between Step 3 and the four icons
-   would have needed a whole empty screen to itself. It now sits under the
-   four icons on the same screen, which reads better and saves a dead scroll.
-
-5. BOOKING CALENDAR
-   Your GoHighLevel calendar is embedded on booking.html, full width with a
-   798px floor so the page doesn't jump while it loads. GoHighLevel's own
-   script sets the final height once the calendar appears.
+   Note: I do not set a height on that iframe. GoHighLevel's own script measures
+   its content and sets the height itself - I tried overriding it while testing
+   and the whole widget collapsed to a sliver. The min-height in the CSS is only
+   a floor so the page does not jump while the calendar loads.
 
 
-VERIFIED AT
------------
-1512x900, 1512x720, 1440x820, 1280x700, 1024x800, 390x844, 390x700, 320x700
-
-At every one of those: 13 sections, each alone on screen, nothing bleeding in
-from above or below, no sideways scrolling, and all three nav anchors landing
-clear of the header.
-
-
-STILL TO DO
------------
-[ ] the 4 screenshots (proof-ads-manager.png, step-1-facebook-ads.png,
-    step-2-crm-automation.png, step-3-calendar.png)
-[ ] the real logo.png
-[ ] the favicon files
-[ ] connect genavise.com - last, once the above are in
+VERIFIED
+--------
+Logo 74px from top. Icon-row to button gap 52px. Image frames 1px #e0e0e0 with
+8px inset. Calendar 1080px wide with its two columns intact, checked live on
+your own pages.dev URL. All 13 sections still alone on screen with zero
+bleed-through.

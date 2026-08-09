@@ -66,7 +66,7 @@ ul{margin:0;padding-left:1.15em}
 
 /* ---------- header ---------- */
 .header{position:sticky;top:0;z-index:10;background:var(--white)}
-.header-inner{max-width:1158px;margin:0 auto;height:160px;padding-top:20px;display:flex;align-items:flex-start}
+.header-inner{max-width:1158px;margin:0 auto;height:160px;padding-top:36px;display:flex;align-items:center}
 /* ---------- logo: IMAGE SLOT ----------
    Drop your logo file in next to this HTML as  logo.png  (or .svg / .webp)
    and it appears automatically. The box is pre-reserved at 220x48 so nothing
@@ -80,10 +80,10 @@ ul{margin:0;padding-left:1.15em}
   white-space:nowrap}
 .logo.no-img img{display:none}
 .logo.no-img .logo-fallback{display:block}
-.header-nav{margin-left:auto;display:flex;align-items:center;gap:34px;padding-top:15px}
+.header-nav{margin-left:auto;display:flex;align-items:center;gap:34px}
 .header-nav a{font-size:16px;line-height:1em;font-variation-settings:var(--ui);letter-spacing:-.01em;color:var(--grey-999);transition:color .2s ease}
 .header-nav a:hover{color:var(--black)}
-.header-cta{margin-left:64px;padding-top:1px}
+.header-cta{margin-left:64px}
 .nav-toggle{display:none}
 
 /* ---------- hero ---------- */
@@ -96,8 +96,10 @@ ul{margin:0;padding-left:1.15em}
 .statrow{display:flex;gap:0}
 .statrow>div{flex:1;display:flex;flex-direction:column;gap:10px}
 .proof{width:894px;max-width:100%;aspect-ratio:894/202;margin:62px auto 0;
-  border-radius:20px;background:var(--grey-eee);overflow:hidden}
-.proof img{width:100%;height:100%;object-fit:cover;display:block}
+  border-radius:20px;background:#fff;overflow:hidden;
+  border:1px solid #e0e0e0;padding:8px;box-sizing:border-box}
+.proof img{width:100%;height:100%;object-fit:cover;display:block;border-radius:6px}
+.proof.empty{background:var(--grey-eee)}
 .proof.empty img{display:none}
 
 .s-why{max-width:948px;margin:0 auto;padding:185px 0 389px;display:flex;flex-direction:column;gap:22px}
@@ -109,10 +111,15 @@ ul{margin:0;padding-left:1.15em}
 .step-copy{width:340px;flex:0 0 340px;display:flex;flex-direction:column;gap:42px}
 .step-media{flex:1;display:flex;justify-content:center}
 /* ---------- screenshot slots ----------
-   Same idea: exact box reserved, image fills it, grey block shows if the file
-   is absent. aspect-ratio keeps the shape when the width shrinks on mobile.   */
-.shot{display:block;width:100%;background:var(--grey-eee);overflow:hidden}
-.shot img{width:100%;height:100%;object-fit:cover;display:block}
+   Exact box reserved, image fills it, grey block shows if the file is absent.
+   aspect-ratio keeps the shape when the width shrinks on mobile.
+   The 1px border + 8px white inset frames each screenshot, so a shot with a
+   white background doesn't bleed into the white page and read as a floating
+   fragment. box-sizing keeps the padding inside the reserved aspect box.      */
+.shot{display:block;width:100%;background:#fff;overflow:hidden;
+  border:1px solid #e0e0e0;padding:8px;box-sizing:border-box}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;border-radius:6px}
+.shot.empty{background:var(--grey-eee)}
 .shot.empty img{display:none}
 .ph-1{max-width:480px;aspect-ratio:480/284;border-radius:10px}
 .ph-2{max-width:446px;aspect-ratio:446/309;border-radius:20px}
@@ -211,7 +218,7 @@ ul{margin:0;padding-left:1.15em}
   .t-step{font-size:17px}
   .t-case,.t-guar{font-size:16px}
 
-  .header-inner{height:auto;min-height:80px;align-items:center;flex-wrap:wrap;padding:14px 0 12px;gap:12px}
+  .header-inner{height:auto;min-height:88px;align-items:center;flex-wrap:wrap;padding:22px 0 14px;gap:12px}
   .header-nav{position:static;order:3;flex-basis:100%;margin:0;padding-top:0;
     flex-direction:column;align-items:flex-start;gap:18px;display:none}
   .header-nav.open{display:flex;padding-top:18px}
@@ -300,16 +307,21 @@ ul{margin:0;padding-left:1.15em}
 .prose .cta{margin-top:20px}
 
 /* booking page: heading + scheduler embed */
-.book-head{max-width:1200px;width:100%;margin:0 auto;padding:76px 0 0}
+.book-head{max-width:1200px;width:100%;margin:0 auto;padding:44px 0 0}
 .book-head h1{font-size:34px;line-height:1.3em;font-variation-settings:var(--display);
   letter-spacing:-.03em;color:var(--black);text-align:center}
-.embed{max-width:1680px;width:100%;margin:44px auto 0;min-height:798px;
+/* 1080px, not full width: the GoHighLevel calendar keeps its two-column layout
+   down to ~900px and reads as a focused card instead of a full-bleed slab.
+   min-height is only a floor to stop the page jumping before the calendar
+   loads - never set `height` on the iframe, GoHighLevel's script owns that and
+   overriding it collapses the widget. */
+.embed{max-width:1080px;width:100%;margin:28px auto 80px;min-height:640px;
   display:flex;align-items:stretch}
 /* GoHighLevel's form_embed.js sets the real height on the iframe once the
    calendar loads, so min-height here is only a floor to stop the page jumping. */
-.embed iframe{width:100%;min-height:798px;border:0;display:block;overflow:hidden}
+.embed iframe{width:100%;min-height:640px;border:0;display:block;overflow:hidden}
 /* shown only when no scheduler has been pasted in yet */
-.embed-empty{width:100%;min-height:798px;background:var(--grey-eee);border-radius:20px;
+.embed-empty{width:100%;min-height:640px;background:var(--grey-eee);border-radius:20px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
   text-align:center;padding:40px}
 .embed-empty strong{font-size:20px;line-height:1.3em;font-variation-settings:var(--display);
@@ -330,8 +342,8 @@ ul{margin:0;padding-left:1.15em}
   .prose h1,.prose h2,.prose h3{max-width:100%}
   .book-head{padding:36px 0 0}
   .book-head h1{font-size:23px}
-  .embed,.embed iframe,.embed-empty{min-height:620px}
-  .embed{margin:28px auto 64px}
+  .embed,.embed iframe,.embed-empty{min-height:560px}
+  .embed{margin:20px auto 56px}
 }
 
 /* ==========================================================================
@@ -371,14 +383,16 @@ ul{margin:0;padding-left:1.15em}
   min-height:calc(100svh - var(--hdr));
   padding-top:0;
 }
-.screen > *{ margin-top:auto; margin-bottom:auto }
+/* NO auto margins here. justify-content:center already centres the group, and
+   auto margins on two children shove them to opposite ends of the screen -
+   which is what opened the huge gap between the four icons and the CTA. */
 
 /* the old fixed paddings created the spacing these screens now handle -
    leaving them in would stack 700px on top of a full viewport */
 .hero,.s-results,.s-why,.step,.pillars,.s-casestats,
 .s-testi,.s-case,.s-guar,.s-finalcta{padding:0}
 .hero,.step{min-height:0}
-.midcta{padding:56px 0 0}
+.midcta{padding:52px 0 0}
 
 @media (max-width:1199.98px){ :root{ --hdr:150px } }
 @media (max-width:809.98px){
