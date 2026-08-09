@@ -68,7 +68,7 @@ ul{margin:0;padding-left:1.15em}
 .header{position:sticky;top:0;z-index:10;background:var(--white)}
 .header-inner{max-width:1158px;margin:0 auto;height:160px;padding-top:20px;display:flex;align-items:flex-start}
 /* ---------- logo: IMAGE SLOT ----------
-   Drop your logo file in next to this HTML as  assets/logo.png  (or .svg / .webp)
+   Drop your logo file in next to this HTML as  logo.png  (or .svg / .webp)
    and it appears automatically. The box is pre-reserved at 220x48 so nothing
    shifts while it loads. If the file is missing, the text wordmark below shows
    instead, so the page never renders broken.                                  */
