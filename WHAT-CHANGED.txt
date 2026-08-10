@@ -1,65 +1,67 @@
-UPLOAD TWO FILES: site.css and booking.html
-===========================================
+WHAT CHANGED — legal pages, 08/09/2026
+Two files replaced: terms-conditions.html, disclaimer.html
 
+THE PROBLEM
+The site advertises "30 qualified buyer leads in 90 days. Or every dollar back."
+The Terms said "No Guarantees" and listed "Lead volume" as something not
+guaranteed. The Disclaimer said "We do not guarantee: A specific number of
+leads." Three places contradicted the refund promise, plus a fourth: the
+liability cap in Terms Section 10 capped everything at 30 days of fees, while
+the guarantee refunds 90 days.
 
-FIRST - THE CALENDAR IS ACTUALLY FINE
--------------------------------------
-Your own observation solved this, and it wasn't a code problem at all.
+THE APPROACH
+Rather than delete the disclaimers (which protect you on everything else), the
+guarantee is now stated affirmatively inside the Terms as Section 3.1, and every
+disclaimer carves it out by name. The documents now agree instead of one
+cancelling the other.
 
-Look at the address bar in the screenshots where it was blank:
+TERMS & CONDITIONS
+1. Heading: "3. No Guarantees" -> "3. No Guarantees (One Exception)"
+2. Intro now begins "Except for the written performance guarantee described in
+   Section 3.1 below..."
+3. Bullet "Lead volume" -> "Lead volume beyond any guaranteed minimum"
+4. Added bullet "Closed transactions" (you disclaim closings on the site)
+5. NEW Section 3.1 Performance Guarantee — states the 30 leads / 90 days /
+   full service-fee refund promise, defines what counts as a qualified lead
+   (5 criteria), and states the conditions: buyer campaigns only, agreed minimum
+   ad budget maintained for the full 90 days, ad spend paid to the platform and
+   not refundable by us, lead volume only (not appointments/closings/revenue).
+   Ends: this is the only performance guarantee, and the signed service
+   agreement governs if it differs.
+6. Section 5: "Fees are non-refundable unless otherwise agreed in writing" ->
+   "Service fees are non-refundable except where a refund is due under the
+   performance guarantee in Section 3.1"
+7. Section 10: liability cap now begins "Except for a refund owed under the
+   performance guarantee in Section 3.1..."
+8. Effective Date 03/24/2026 -> 08/09/2026
 
-    01b02751.genavise-site.pages.dev/booking
-    87bcb7ea.genavise-site.pages.dev/booking
-    481a84b1.genavise-site.pages.dev/booking
+DISCLAIMER
+1. The "illustrative purposes only" paragraph now ends: "This does not limit the
+   written performance guarantee described in Section 3.1 of our Terms &
+   Conditions and in your signed service agreement." (links to the Terms page)
+2. "We do not guarantee:" -> "Except for that written performance guarantee, we
+   do not guarantee:"
+3. Bullet "A specific number of leads" -> "Lead volume beyond any guaranteed
+   minimum"
+Everything else on both pages is untouched.
 
-Those hashed prefixes are Cloudflare PREVIEW URLs. Every commit gets its own
-frozen snapshot at its own address. When you click a deployment in the Cloudflare
-dashboard, it opens that snapshot - and the ones you were clicking are older
-commits from before the fixes. They will stay broken forever, because that is
-what a snapshot is.
+HOW TO PUBLISH
+GitHub repo -> click terms-conditions.html -> pencil icon -> select all, paste
+the new version -> Commit changes. Repeat for disclaimer.html. Cloudflare
+redeploys in about a minute. Or drag both files into the repo's "Add file ->
+Upload files" and let them overwrite.
 
-The real site has no hash:
-
-    https://genavise-site.pages.dev/booking          <- bookmark this one
-
-I loaded it and the calendar renders correctly: 1080px wide, 787px tall,
-two columns, visible. Verified directly on the page.
-
-Once genavise.com is connected, this stops being a trap entirely - your domain
-always serves the newest deployment. Until then, only trust the URL with no hash
-in front of it.
-
-I should have caught this earlier. I was diagnosing CSS while you were looking at
-old snapshots, and I sent you a "fix" for a bug that wasn't there. Sorry for the
-wasted round trip.
-
-
-SECOND - A SAFETY NET, WHICH IS WORTH HAVING ANYWAY
---------------------------------------------------
-While testing I did see the calendar fail to appear on the real URL once. It is a
-third-party widget living on GoHighLevel's servers, so it can be slow, it can
-fail, and an ad blocker or privacy extension can strip it out entirely. Some
-share of your real visitors run those extensions.
-
-The failure mode was bad: a completely blank space at the exact moment someone
-has decided to book.
-
-booking.html now watches for it. If the calendar has not appeared after about 9
-seconds, a message appears in its place with a button that opens the booking page
-directly in a new tab. If the calendar shows up late, the message disappears
-again on its own. Nobody ever stares at a blank rectangle.
-
-One detail worth recording, because it caught me out: you cannot detect this by
-measuring the iframe's height. The CSS gives it a 640px min-height floor so the
-page doesn't jump while loading, which makes an iframe that never loaded look
-perfectly healthy. The reliable signal is that GoHighLevel sets an INLINE height
-on the iframe once the calendar is genuinely measured and ready. That is what the
-script checks.
-
-
-VERIFIED
---------
-Calendar rendering on the real URL at 1080px with both columns. Fallback stays
-hidden while loading, appears after ~9s if the calendar never arrives, and hides
-itself again if the calendar turns up late. Tested at 1512x900 and 390x844, no
-sideways scrolling.
+TWO THINGS TO DECIDE
+1. NOT A LAWYER. I am not one, and this is a written refund obligation. Have a
+   lawyer read Section 3.1 before it goes live, and make sure the wording in
+   your signed service agreement matches it. Section 3.1 says the signed
+   agreement wins if the two differ — so the agreement is the document that
+   actually binds you.
+2. "Or every dollar back" on the homepage. Your own fine print says the refund
+   is your service fee, and ad spend goes to Meta and does not come back. The
+   headline promises more than the terms deliver. Changing it to "Or every
+   dollar of our fee back" closes that gap without weakening the offer. Your
+   call — say the word and I will make the edit.
+3. Termination gap: the Terms do not say what happens to the guarantee if a
+   client cancels at day 40. Worth deciding with your lawyer whether early
+   termination voids it.
