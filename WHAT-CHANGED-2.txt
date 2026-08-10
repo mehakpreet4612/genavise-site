@@ -1,0 +1,62 @@
+"ALL YOUR MONEY BACK" — consistency pass, 08/10/2026
+Three files replaced: index.html, terms-conditions.html
+(disclaimer.html unchanged from the last batch — it never mentioned money)
+
+WHY
+"Service fee" was jargon. Since your clients put their own card on the ad
+account, every dollar they pay YOU is the fee — so "all your money back" is
+literally true, not a softer version of the promise. The site now says that
+plainly and the Terms say the same thing in the same words.
+
+HOME PAGE (index.html)
+Headline:
+  before  30 qualified buyer leads in 90 days. Or every dollar back.
+  after   30 qualified buyer leads in 90 days. Or all your money back.
+
+Body:
+  before  ...you get 100% of your service fee back — and you keep the entire
+          system we built.
+  after   ...you get all your money back — every dollar you've paid us — and you
+          keep the entire system we built.
+
+Fine print:
+  before  Requires maintaining your agreed minimum ad spend.
+  after   Requires maintaining your agreed minimum ad spend, billed by the ad
+          platform directly to your own card — that budget never passes through us.
+  (This is what makes "all your money back" airtight: it says up front that the
+  ad budget was never yours to refund, so nobody can claim they expected it back.)
+
+TERMS & CONDITIONS — Section 3.1
+  before  ...you receive a full refund of the service fees paid for that period
+  after   ...you get all your money back — a full refund of every dollar you have
+          paid us for that period
+  before  Advertising spend is paid directly to the advertising platform and is
+          not refundable by us.
+  after   Advertising budget is billed by the advertising platform directly to you
+          and is never paid to us, so it is not part of any refund.
+
+TERMS & CONDITIONS — Section 5
+  before  Service fees are non-refundable except where a refund is due under the
+          performance guarantee in Section 3.1
+  after   Fees are non-refundable except where a refund is due under the
+          performance guarantee in Section 3.1, which refunds everything you have
+          paid us for the guarantee period
+
+Section 10's liability carve-out from the last batch still stands and needs no
+change — it already says "except for a refund owed under Section 3.1."
+
+CHECKED
+- "service fee" no longer appears anywhere on the site
+- Nothing else on the site mentions the refund, so there is no fourth place to fix
+- The guarantee section still fits one full screen with no cut-off at 1440x900,
+  1280x720 and 390x844 (the longer paragraph did not push anything off-screen)
+- No horizontal overflow on either page, desktop or phone
+
+ONE THING THIS DEPENDS ON
+Your signed service agreement has to say the same thing. Section 3.1 states the
+signed agreement governs if the two differ — so if the agreement still says
+"service fees," that is the number a client would actually be owed. Get the two
+matched, and have a lawyer look at the pair.
+
+Still undecided from before: what happens to the guarantee if a client cancels at
+day 40. The documents are silent on it.
