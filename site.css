@@ -479,27 +479,41 @@ ul{margin:0;padding-left:1.15em}
 }
 
 
-/* ===== Case study + Guarantee layout (Oct 2026) ===== */
-.s-case{align-items:center;text-align:center}
-.t-h2-case{text-align:center}
-.s-case .t-case-lead{max-width:640px;text-align:center}
-.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:900px;margin-top:8px}
-.case-card{background:var(--grey-eee);border-radius:20px;padding:36px 34px 34px;text-align:left;display:flex;flex-direction:column;gap:10px}
-.case-card .t-num{margin:0;font-size:52px;text-align:left}
-.case-kicker{font-size:13px;line-height:1.4em;font-variation-settings:var(--semi);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-45)}
-.case-card .t-case{max-width:none}
-.s-case .t-fine{max-width:560px}
+/* ===== Case study + Guarantee layout (Oct 2026) =====
+   Both blocks share one pattern: eyebrow, centred display headline, one short
+   paragraph, then a quiet grey panel row. Heights are kept near the other
+   screens (under ~520px) so each settles on one viewport. */
+.s-case{align-items:center;text-align:center;gap:18px}
+.t-h2-case{font-size:38px;line-height:1.2em;letter-spacing:-.03em;text-align:center}
+.s-case .t-case-lead{max-width:720px;text-align:center}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;margin-top:10px}
+.case-card{background:var(--grey-eee);border-radius:20px;padding:28px 30px 26px;text-align:left;display:flex;flex-direction:column;gap:8px}
+.case-kicker{font-size:14px;line-height:1.3em;font-variation-settings:var(--semi);letter-spacing:-.01em;color:var(--grey-999)}
+.case-card .t-num{font-size:44px;line-height:1em;text-align:left;margin:2px 0 4px}
+.case-card .t-case{max-width:none;font-size:15px;line-height:1.5em}
+.s-case .t-fine{max-width:560px;margin-top:2px}
 
-.t-guar-sub{color:var(--black);font-variation-settings:var(--read-15)}
-.guar-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px}
-.guar-list li{background:var(--grey-eee);border-radius:100px;padding:10px 18px;font-size:15px;line-height:1.3em;font-variation-settings:var(--read-15);letter-spacing:-.01em;color:var(--black)}
-.guar-terms{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;width:100%;max-width:900px;margin-top:28px;padding-top:28px;border-top:1px solid var(--grey-eee);text-align:left}
-.guar-terms-k{font-size:12px;line-height:1.4em;font-variation-settings:var(--semi);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-45);margin-bottom:6px}
-.guar-terms-v{font-size:13px;line-height:1.55em;font-variation-settings:var(--read);color:var(--ink-40)}
+.s-guar{gap:14px}
+.s-guar .t-guar{max-width:700px}
+.t-guar-sub{font-size:14px;line-height:1.3em;font-variation-settings:var(--semi);letter-spacing:-.01em;color:var(--grey-999);margin-top:4px}
+.guar-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:800px}
+.guar-list li{background:var(--grey-eee);border-radius:100px;padding:9px 16px;font-size:14px;line-height:1.3em;font-variation-settings:var(--read-15);letter-spacing:-.01em;color:var(--black)}
+.s-guar .btn{margin-top:6px}
+.guar-terms{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;width:100%;margin-top:16px;padding-top:18px;border-top:1px solid var(--grey-eee);text-align:left}
+.guar-terms-k{font-size:13px;line-height:1.4em;font-variation-settings:var(--semi);letter-spacing:-.01em;color:var(--grey-999);margin-bottom:4px}
+.guar-terms-v{font-size:13px;line-height:1.45em;font-variation-settings:var(--read);letter-spacing:0;color:var(--ink-40)}
 .guar-terms-v a{text-decoration:underline;text-underline-offset:2px}
+@media (max-width:1199.98px){
+  .t-h2-case{font-size:32px}
+}
 @media (max-width:809.98px){
-  .case-grid,.guar-terms{grid-template-columns:1fr}
-  .case-card{padding:28px 24px}
-  .case-card .t-num{font-size:40px}
-  .guar-list li{font-size:14px;padding:9px 14px}
+  .t-h2-case{font-size:28px}
+  .t-h2-case br,.t-h2-guar br{display:none}
+  .case-grid,.guar-terms{grid-template-columns:1fr;gap:14px}
+  .case-card{padding:24px 22px}
+  .case-card .t-num{font-size:38px}
+  .guar-list li{font-size:13px;padding:8px 13px}
+}
+@media (max-width:359.98px){
+  .t-h2-case{font-size:24px}
 }
