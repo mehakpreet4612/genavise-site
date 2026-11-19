@@ -44,11 +44,9 @@ src="https://www.facebook.com/tr?id=893000296931379&ev=PageView&noscript=1"
 .pa-hero .t-hero{font-size:56px;line-height:1.05em;text-wrap:balance}
 @media (min-width:1150px){.pa-hero .t-hero{white-space:nowrap}}
 .pa-lead{max-width:620px;font-size:19px;line-height:1.55em;font-variation-settings:var(--read);color:var(--grey-666)}
-.pa-get{max-width:980px;margin:0 auto;padding:40px 24px 120px;display:flex;flex-direction:column;gap:28px}
-.pa-list{list-style:none;margin:0;padding:0;border-bottom:1px solid #e3e3e3}
-.pa-list li{display:grid;grid-template-columns:120px 1fr;align-items:baseline;padding:34px 0;border-top:1px solid #e3e3e3}
-.pa-num{font-size:15px;letter-spacing:.12em;font-variation-settings:var(--semi);color:var(--ink-40)}
-.pa-list p{font-size:30px;line-height:1.18em;letter-spacing:-.03em;font-variation-settings:var(--display)}
+.pa-get{max-width:980px;margin:0 auto;padding:80px 24px 120px;display:flex;flex-direction:column;gap:48px}
+.pa-list{list-style:none;margin:0 auto;padding:0;max-width:860px;display:flex;flex-direction:column;gap:34px;text-align:center}
+.pa-list li{font-size:38px;line-height:1.12em;letter-spacing:-.035em;font-variation-settings:var(--display);text-wrap:balance}
 .pa-terms{max-width:980px;margin:0 auto;padding:0 24px 140px;display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .pa-terms>div{border-left:3px solid var(--black);padding:4px 0 4px 20px}
 .pa-k{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-variation-settings:var(--semi);color:var(--ink-45);margin-bottom:12px}
@@ -64,15 +62,14 @@ src="https://www.facebook.com/tr?id=893000296931379&ev=PageView&noscript=1"
 .pa-fine{max-width:640px;text-align:center;font-size:15px;line-height:1.6em;font-variation-settings:var(--read-15);color:var(--grey-999)}
 @media (max-width:900px){
   .pa-hero .t-hero{font-size:44px}
-  .pa-list p{font-size:24px}
-  .pa-list li{grid-template-columns:72px 1fr}
+  .pa-list li{font-size:30px}
   .pa-terms{grid-template-columns:1fr;gap:28px}
 }
 @media (max-width:600px){
   .pa-hero .t-hero{font-size:32px}
   .pa-lead{font-size:17px}
-  .pa-list li{grid-template-columns:44px 1fr;padding:24px 0}
-  .pa-list p{font-size:20px}
+  .pa-list li{font-size:24px}
+  .pa-list{gap:26px}
   .pa-get{padding:24px 20px 72px}
   .pa-terms{padding:0 20px 80px}
 }
@@ -113,22 +110,22 @@ src="https://www.facebook.com/tr?id=893000296931379&ev=PageView&noscript=1"
 
   <section class="pa-get rv">
     <p class="t-eyebrow">What you get:</p>
-    <ol class="pa-list">
-      <li><span class="pa-num">01</span><p>Your cost per closing for every lead source you use</p></li>
-      <li><span class="pa-num">02</span><p>Your single biggest pipeline leak, named</p></li>
-      <li><span class="pa-num">03</span><p>A written 90-day plan within 48 hours, built on your market</p></li>
-      <li><span class="pa-num">04</span><p>Your Pipeline Profit Dashboard, a sheet you keep</p></li>
-      <li><span class="pa-num">05</span><p>The first-response and past-client reactivation texts I use</p></li>
-    </ol>
+    <ul class="pa-list">
+      <li>Your cost per closing<span class="muted"> for every lead source you use.</span></li>
+      <li>Your single biggest pipeline leak,<span class="muted"> named.</span></li>
+      <li>A written 90-day plan<span class="muted"> within 48 hours, built on your market.</span></li>
+      <li>Your Pipeline Profit Dashboard,<span class="muted"> a sheet you keep.</span></li>
+      <li>The first-response and past-client reactivation texts<span class="muted"> I use.</span></li>
+    </ul>
   </section>
 
   <div class="screen pa-facts-screen">
   <section class="s-casestats rv pa-facts">
     <div class="statrow">
-      <div><h3 class="t-num">$497</h3><h3 class="t-lab-t">Paid When You Book</h3></div>
-      <div><h3 class="t-num">30 Minutes</h3><h3 class="t-lab-t">On A Call, Your Numbers</h3></div>
-      <div><h3 class="t-num">48 Hours</h3><h3 class="t-lab-t">To Your Written 90-Day Plan</h3></div>
-      <div><h3 class="t-num">14 Days</h3><h3 class="t-lab-t">To Put The $497 Toward A Build</h3></div>
+      <div><h3 class="t-num">$497</h3><h3 class="t-lab-t">Full Refund Up To 24 Hours Before</h3></div>
+      <div><h3 class="t-num">30 Minutes</h3><h3 class="t-lab-t">One Call On Your Numbers</h3></div>
+      <div><h3 class="t-num">48 Hours</h3><h3 class="t-lab-t">Until Your Written Plan Arrives</h3></div>
+      <div><h3 class="t-num">14 Days</h3><h3 class="t-lab-t">To Use The $497 If You Hire Us</h3></div>
     </div>
     <p class="pa-fine">Full refund if you cancel at least 24 hours before the call. If you hire us to build your lead system within 14 days of your audit, the $497 comes off the price. The audit is a review of your numbers and a plan to fix the biggest gap. It doesn&rsquo;t promise a set number of leads or closings.</p>
   </section>
