@@ -38,6 +38,43 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=893000296931379&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<style>
+/* Pipeline Profit Audit page. Same tokens as site.css. */
+.pa-hero{max-width:980px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.pa-hero .t-hero{font-size:64px;line-height:1.02em}
+.pa-lead{max-width:620px;font-size:19px;line-height:1.55em;font-variation-settings:var(--read);color:var(--grey-666)}
+.pa-get{max-width:1080px;margin:0 auto;padding:40px 24px 120px;display:flex;flex-direction:column;gap:36px}
+.pa-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.pa-card{grid-column:span 2;background:#f5f5f7;border-radius:28px;padding:36px 32px 40px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.pa-card.pa-wide{grid-column:span 3;min-height:240px}
+.pa-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.06)}
+.pa-num{font-size:14px;letter-spacing:.12em;font-variation-settings:var(--semi);color:var(--ink-40)}
+.pa-card p{font-size:26px;line-height:1.18em;letter-spacing:-.025em;font-variation-settings:var(--display)}
+.pa-card:not(.pa-wide) p{font-size:22px}
+.pa-terms{max-width:1080px;margin:0 auto;padding:0 24px 140px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.pa-terms>div{padding:28px 32px 0;border-top:1px solid var(--grey-eee)}
+.pa-terms>div+div{border-left:1px solid var(--grey-eee)}
+.pa-k{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-variation-settings:var(--semi);color:var(--ink-45);margin-bottom:12px}
+.pa-v{font-size:17px;line-height:1.55em;font-variation-settings:var(--read);color:var(--ink-70)}
+.pa-book-head{padding:0 24px 24px}
+@media (max-width:900px){
+  .pa-hero .t-hero{font-size:44px}
+  .pa-card,.pa-card.pa-wide{grid-column:span 3}
+  .pa-card:last-child{grid-column:span 6}
+  .pa-terms{grid-template-columns:1fr}
+  .pa-terms>div+div{border-left:0}
+  .pa-terms>div{padding:24px 0 0;margin-bottom:24px}
+}
+@media (max-width:600px){
+  .pa-hero .t-hero{font-size:32px}
+  .pa-lead{font-size:17px}
+  .pa-grid{grid-template-columns:1fr}
+  .pa-card,.pa-card.pa-wide,.pa-card:last-child{grid-column:auto;min-height:0}
+  .pa-card p,.pa-card:not(.pa-wide) p{font-size:21px}
+  .pa-get{padding:24px 20px 72px}
+  .pa-terms{padding:0 20px 80px}
+}
+</style>
 </head>
 <body>
 <div class="page">
@@ -61,28 +98,33 @@ src="https://www.facebook.com/tr?id=893000296931379&ev=PageView&noscript=1"
     </div>
   </header>
 
-  <div class="screen">
-  <section class="s-guar rv">
+  <div class="screen pa-hero-screen">
+  <section class="pa-hero rv">
     <p class="t-eyebrow">Pipeline Profit Audit</p>
-    <h2 class="t-h2-guar">What every lead source really costs you.<br>And where your pipeline is leaking.</h2>
-    <p class="t-guar">For agents who closed 20 to 60 sides last year. We go through your numbers together on a 30-minute call, and you leave knowing what each source costs you per closing and the three moves I&rsquo;d make over the next 90 days.</p>
-    <p class="t-guar t-guar-sub">What you get:</p>
-    <ul class="guar-list">
-      <li>Your cost per closing for every lead source you use</li>
-      <li>Your single biggest pipeline leak, named</li>
-      <li>A written 90-day plan within 48 hours, built on your market</li>
-      <li>Your Pipeline Profit Dashboard, a sheet you keep</li>
-      <li>The first-response and past-client reactivation texts I use</li>
-    </ul>
-    <a class="btn btn-primary" href="#book">Book Your Audit &middot; $497</a>
-    <div class="guar-terms">
-      <div><p class="guar-terms-k">Price</p><p class="guar-terms-v">$497, paid when you book. Full refund if you cancel at least 24 hours before the call.</p></div>
-      <div><p class="guar-terms-k">Credit</p><p class="guar-terms-v">If you hire us to build your lead system within 14 days of your audit, the $497 comes off the price.</p></div>
-      <div><p class="guar-terms-k">What it is</p><p class="guar-terms-v">A review of your numbers and a plan to fix the biggest gap. It doesn't promise a set number of leads or closings.</p></div>
-    </div>
+    <h1 class="t-hero">What every lead source really costs you.<br><span class="muted">And where your pipeline is leaking.</span></h1>
+    <p class="pa-lead">For agents who closed 20 to 60 sides last year. We go through your numbers together on a 30-minute call, and you leave knowing what each source costs you per closing and the three moves I&rsquo;d make over the next 90 days.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="#book">Book Your Audit &middot; $497</a></div>
   </section>
   </div>
 
+  <section class="pa-get rv">
+    <p class="t-eyebrow">What you get:</p>
+    <div class="pa-grid">
+      <div class="pa-card pa-wide"><span class="pa-num">01</span><p>Your cost per closing for every lead source you use</p></div>
+      <div class="pa-card pa-wide"><span class="pa-num">02</span><p>Your single biggest pipeline leak, named</p></div>
+      <div class="pa-card"><span class="pa-num">03</span><p>A written 90-day plan within 48 hours, built on your market</p></div>
+      <div class="pa-card"><span class="pa-num">04</span><p>Your Pipeline Profit Dashboard, a sheet you keep</p></div>
+      <div class="pa-card"><span class="pa-num">05</span><p>The first-response and past-client reactivation texts I use</p></div>
+    </div>
+  </section>
+
+  <section class="pa-terms rv">
+    <div><p class="pa-k">Price</p><p class="pa-v">$497, paid when you book. Full refund if you cancel at least 24 hours before the call.</p></div>
+    <div><p class="pa-k">Credit</p><p class="pa-v">If you hire us to build your lead system within 14 days of your audit, the $497 comes off the price.</p></div>
+    <div><p class="pa-k">What it is</p><p class="pa-v">A review of your numbers and a plan to fix the biggest gap. It doesn&rsquo;t promise a set number of leads or closings.</p></div>
+  </section>
+
+  <div class="pa-book-head rv"><p class="t-eyebrow">Book Your Audit &middot; $497</p></div>
   <section class="embed rv" id="book">
     <iframe src="https://api.leadconnectorhq.com/widget/booking/fdSSwyn3G2VoFVMJNIAc"
             title="Book a Pipeline Profit Audit"
